@@ -17,43 +17,46 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
-    <!-- Icons, CSS and JS -->
+    <!-- CSS Files -->
     @vite([
         'resources/painel/css/nucleo-icons.css',
         'resources/painel/css/black-dashboard.css',
         'resources/painel/css/theme.css',
     ])
+
+    <!-- Perfect Scrollbar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/css/perfect-scrollbar.min.css">
 </head>
 <body class="{{ $class ?? '' }}">
-@auth()
-    <div class="wrapper">
-        @include('layouts.navbars.sidebar')
-        <div class="main-panel">
-            @include('layouts.navbars.navbar')
+{{--@auth()--}}
+<div class="wrapper">
+    @include('layouts.navbars.sidebar')
+    <div class="main-panel">
+        @include('layouts.navbars.navbar')
 
-            <div class="content">
-                @yield('content')
-            </div>
+        <div class="content">
+            @yield('content')
+        </div>
 
-            @include('layouts.footer')
-        </div>
+        @include('layouts.footer')
     </div>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
-@else
-    @include('layouts.navbars.navbar')
-    <div class="wrapper wrapper-full-page">
-        <div class="full-page {{ $contentClass ?? '' }}">
-            <div class="content">
-                <div class="container">
-                    @yield('content')
-                </div>
-            </div>
-            @include('layouts.footer')
-        </div>
-    </div>
-@endauth
+</div>
+<form id="logout-form" action="#" method="POST" style="display: none;">
+    @csrf
+</form>
+{{--@else--}}
+{{--    @include('layouts.navbars.navbar')--}}
+{{--    <div class="wrapper wrapper-full-page">--}}
+{{--        <div class="full-page {{ $contentClass ?? '' }}">--}}
+{{--            <div class="content">--}}
+{{--                <div class="container">--}}
+{{--                    @yield('content')--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            @include('layouts.footer')--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--@endauth--}}
 <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
         <a href="#" data-toggle="dropdown">
@@ -98,21 +101,41 @@
     </div>
 </div>
 
+<!--   Core JS Files   -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+<!-- Perfect Scrollbar -->
+<script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/dist/perfect-scrollbar.min.js"></script>
+
+<!-- Bootstrap Notify -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"
+        integrity="sha512-vCgNjt5lPWUyLz/tC5GbiUanXtLX1tlPXVFaX5KAQrUHjwPcCwwPOLn34YBFqws7a7+62h7FRvQ1T0i/yFqANA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Vite -->
 @vite([
-        'resources/painel/js/core/jquery.min.js',
-        'resources/painel/js/core/popper.min.js',
-        'resources/painel/js/core/bootstrap.min.js',
-        'resources/painel/js/plugins/perfect-scrollbar.jquery.min.js',
-        'resources/painel/js/plugins/bootstrap-notify.js',
-        'resources/painel/js/black-dashboard.min.js?v=1.0.0',
-        'resources/painel/js/theme.js'
+    'resources/painel/js/plugins/chartjs.min.js',
+    'resources/painel/js/black-dashboard.js',
+    'resources/painel/js/theme.js',
 ])
 
+<!-- JS File -->
 @stack('js')
 
 <script>
-    $(document).ready(function () {
-        $().ready(function () {
+    $(() => {
+        $(() => {
             $sidebar = $('.sidebar');
             $navbar = $('.navbar');
             $main_panel = $('.main-panel');

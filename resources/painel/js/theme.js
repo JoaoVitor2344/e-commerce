@@ -1,6 +1,6 @@
-type = ['primary', 'info', 'success', 'warning', 'danger'];
+var type = ['primary', 'info', 'success', 'warning', 'danger'];
 
-demo = {
+var demo = {
   initPickColor: function() {
     $('.pick-class-label').click(function() {
       var new_class = $(this).attr('new-class');
@@ -108,7 +108,7 @@ demo = {
 
   initDashboardPageCharts: function() {
 
-    gradientChartOptionsConfigurationWithTooltipBlue = {
+    var gradientChartOptionsConfigurationWithTooltipBlue = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -156,7 +156,7 @@ demo = {
       }
     };
 
-    gradientChartOptionsConfigurationWithTooltipPurple = {
+    var gradientChartOptionsConfigurationWithTooltipPurple = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -204,7 +204,7 @@ demo = {
       }
     };
 
-    gradientChartOptionsConfigurationWithTooltipOrange = {
+    var gradientChartOptionsConfigurationWithTooltipOrange = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -252,7 +252,7 @@ demo = {
       }
     };
 
-    gradientChartOptionsConfigurationWithTooltipGreen = {
+    var gradientChartOptionsConfigurationWithTooltipGreen = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -300,8 +300,7 @@ demo = {
       }
     };
 
-
-    gradientBarChartConfiguration = {
+    var gradientBarChartConfiguration = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -383,7 +382,6 @@ demo = {
       data: data,
       options: gradientChartOptionsConfigurationWithTooltipPurple
     });
-
 
     var ctxGreen = document.getElementById("chartLineGreen").getContext("2d");
 
@@ -740,3 +738,5 @@ demo = {
   }
 
 };
+
+demo.initDashboardPageCharts();

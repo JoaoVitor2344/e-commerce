@@ -1,4 +1,4 @@
-@extends('layouts.painel', ['pageSlug' => 'dashboard'])
+@extends('layouts.app.painel', ['pageSlug' => 'dashboard'])
 
 @section('content')
     <div class="row">
@@ -370,12 +370,3 @@
         </div>
     </div>
 @endsection
-
-@push('js')
-    @vite(['resources/painel/js/plugins/chartjs.min.js'])
-    <script>
-        $(document).ready(function() {
-          demo.initDashboardPageCharts();
-        });
-    </script>
-@endpush

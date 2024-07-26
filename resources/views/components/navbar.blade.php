@@ -1,8 +1,8 @@
-<nav class="navbar">
-    <div class="container-fluid mb-3">
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
         <div class="row w-100">
-            <div class="col-sm-4">
-                <a href="#"><img src="" alt="Logo de site"></a>
+            <div class="col-sm-4 d-flex align-items-center">
+                <a href="{{ route('dashboard.index') }}" class="text-white fw-bold" style="text-decoration: none;">Página inicial</a>
             </div>
             <div class="col-sm-4">
                 <form class="d-flex gap-3" id="" action="" method="GET">

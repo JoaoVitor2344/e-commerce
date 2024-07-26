@@ -15,19 +15,12 @@
                 <div class="row">
                     @foreach($categories as $category)
                         <div class="col-md-3">
-                            <a href="#">
-                                <div class="card text-bg-dark">
-                                    <img src="https://placehold.co/100x100" class="card-img"
-                                         alt="{{ $category->slug }}">
-                                    <div class="card-img-overlay">
-                                        <h5 class="card-title">{{ $category->name }}</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural
-                                            lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </a>
+                            <x-card
+                                link="#"
+                                img="https://placehold.co/100x100"
+                                title="{{ $category->name }}"
+                                text="This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+                                small="Last updated 3 mins ago"/>
                         </div>
                     @endforeach
                 </div>
@@ -41,19 +34,12 @@
                 <div class="row">
                     @foreach($products as $product)
                         <div class="col-md-3 mb-3">
-                            <a href="#">
-                                <div class="card text-bg-dark">
-                                    <img src="https://placehold.co/100x100" class="card-img"
-                                         alt="">
-                                    <div class="card-img-overlay">
-                                        <h5 class="card-title">{{ $product->name }}</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural
-                                            lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </a>
+                            <x-card
+                                link="{{ route('products.show', $product->id) }}"
+                                img="https://placehold.co/100x100"
+                                title="{{ $product->name }}"
+                                text="This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+                                small="Last updated 3 mins ago"/>
                         </div>
                     @endforeach
                 </div>
@@ -61,3 +47,11 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function () {
+            initCardOverlay();
+        });
+    </script>
+@endpush
