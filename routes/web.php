@@ -7,6 +7,14 @@ Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->na
 Route::prefix('/painel')->group(function () {
     Route::get('/', [\App\Http\Controllers\PainelController::class, 'index'])->name('painel.index');
 
+    Route::prefix('/usuarios')->group(function () {
+        Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('painel.users.index');
+        Route::get('/adicionar', [\App\Http\Controllers\UserController::class, 'create'])->name('painel.users.create');
+        Route::post('/adicionar', [\App\Http\Controllers\UserController::class, 'store'])->name('painel.users.store');
+        Route::get('/{id}/atualizar', [\App\Http\Controllers\UserController::class, 'edit'])->name('painel.users.edit');
+        Route::put('/{id}/atualizar', [\App\Http\Controllers\UserController::class, 'update'])->name('painel.users.update');
+    });
+
     Route::prefix('/login')->group(function () {
         Route::get('/', [\App\Http\Controllers\PainelController::class, 'login'])->name('painel.login');
     });

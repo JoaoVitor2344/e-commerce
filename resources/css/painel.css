@@ -1,0 +1,8 @@
+.card-component:hover {
+    transition: transform 0.3s;
+    transform: scale(1.03);
+}
+
+.card-component .card-img {
+    filter: brightness(80%);
+}
