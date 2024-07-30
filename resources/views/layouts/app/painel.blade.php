@@ -34,37 +34,34 @@
 
         <div class="col-10 mt-5">
             <div class="row mb-3">
-                <div class="col-6">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            @if(count($breadcrumb) > 0)
-                                @foreach($breadcrumb as $item)
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        @if(isset($item['route']))
-                                            <a href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
-                                        @else
-                                            {{ $item['text'] }}
-                                        @endif
-                                    </li>
-                                @endforeach
-                            @endif
-                        </ol>
-                    </nav>
-                </div>
+                @isset($breadcrumb)
+                    <div class="col-6">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                @if(count($breadcrumb) > 0)
+                                    @foreach($breadcrumb as $item)
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            @if(isset($item['route']))
+                                                <a href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
+                                            @else
+                                                {{ $item['text'] }}
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ol>
+                        </nav>
+                    </div>
+                @endisset
                 <div class="col-6 text-end">
-                    @isset($btnText)
-                        @if($btnText != '')
-                            <a class="d-none d-sm-inline-block btn btn-sm btn-outline-primary"
-                               @isset($btnRoute)
-                                   href="{{ route($btnRoute[0], $btnRoute['id']) }}"
-                               @endisset
-                               @isset($btnModal)
-                                   data-bs-toggle="modal"
-                               data-bs-target="{{ $btnModal }}"
-                                @endisset>
-
-                                {{ $btnText }}</a>
-                        @endif
+                    @isset($btn)
+                        <a class="d-none d-sm-inline-block btn btn-sm btn-outline-primary"
+                           @isset($btn['route'])
+                                href="{{ route($btn['route'], $btn['id'] ?? '') }}"
+                           @endisset
+                           data-bs-toggle="modal"
+                           data-bs-target="#{{ $btn['modal'] ?? '' }}">
+                            {{ $btn['text'] }}</a>
                     @endisset
                 </div>
             </div>

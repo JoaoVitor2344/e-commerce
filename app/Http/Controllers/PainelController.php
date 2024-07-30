@@ -63,10 +63,22 @@ class PainelController extends Controller
         //
     }
 
-    /**
-     * Show the login form.
-     */
-    public function login() {
-        return view('painel.login');
+    public function authenticate(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (auth()->attempt($credentials)) {
+            auth()->logout();
+            auth()->attempt($credentials);
+
+            return redirect()->route('painel.index');
+        }
+
+        return redirect()->back();
     }
 }

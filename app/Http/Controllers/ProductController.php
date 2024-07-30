@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,11 +14,10 @@ class ProductController extends Controller
      */
     public function index($store_id)
     {
-        $products = Product::where('store_id', $store_id)
-            ->orderBy('id', 'desc')
-            ->paginate(5);
+        $store = Store::findOrFail($store_id);
+        $products = $store->products->paginate(10);
 
-        return view('painel.products.index', compact('products'));
+        return view('painel.products.index', compact('store', 'products'));
     }
 
     /**

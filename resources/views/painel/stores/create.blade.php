@@ -3,9 +3,7 @@
         'text' => 'Adicionar',
         'form' => 'formCreateStore'
     ]"
-    :modal="[
-        'id' => 'modal-add-store'
-    ]">
+    :modal="$modal">
     <x-slot name="html">
         <form action="{{ route('painel.stores.store') }}"
               id="formCreateStore"

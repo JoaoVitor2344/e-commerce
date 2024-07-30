@@ -7,9 +7,10 @@
         ],
         ['text' => 'Usuários'],
     ],
-    'btnText' => 'Adicionar usuário',
-    'btnRoute' => 'painel.users.create',
-    'btnModal' => '#modal-add-user'
+    'btn' => [
+        'modal' => 'modal-add-user',
+        'text' => 'Adicionar usuário',
+    ],
 ])
 
 @section('content')
@@ -30,5 +31,9 @@
     </div>
     {{ $users->links() }}
 
-    @include('painel.users.create', ['modal' => true])
+    @include('painel.users.create', [
+        'modal' => [
+            'name' => 'modal-add-user',
+        ]
+    ])
 @endsection

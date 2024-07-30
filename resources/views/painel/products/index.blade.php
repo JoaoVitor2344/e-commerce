@@ -1,5 +1,5 @@
 @extends('layouts.app.painel', [
-    'title' => 'Dashboard',
+    'title' => 'Produtos',
     'breadcrumb' => [
         [
             'text' => 'Página inicial',
@@ -11,11 +11,6 @@
         ],
         ['text' => 'Produtos'],
     ],
-    'btnText' => 'Adicionar produto',
-    'btnRoute' => [
-        'painel.products.create',
-        'id' => request()->store_id
-        ],
     ])
 
 @section('content')

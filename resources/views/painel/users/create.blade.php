@@ -3,7 +3,8 @@
         :button="[
             'text' => 'Adicionar',
             'form' => 'formCreateUser'
-        ]">
+        ]"
+    :modal="$modal">
         <x-slot name="html">
             <form action="{{ route('painel.users.store') }}" id="formCreateUser" method="POST">
                 @csrf

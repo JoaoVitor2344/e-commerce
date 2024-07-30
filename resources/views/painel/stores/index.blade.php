@@ -7,9 +7,10 @@
         ],
         ['text' => 'Lojas']
     ],
-    'btnText' => 'Adicionar loja',
-    'btnRoute' => 'painel.stores.create',
-    'btnModal' => '#modal-add-store'
+    'btn' => [
+        'modal' => 'modal-create-store',
+        'text' => 'Adicionar loja',
+    ],
 ])
 
 @section('content')
@@ -33,7 +34,7 @@
                             <span class="badge bg-{{ $store->status->getBadge() }}">{{ __($store->status->value) }}</span>
                         <td>
                             <a class="btn btn-sm btn-outline-secondary"
-                                href="{{ route('painel.products.index', $store->id) }}">
+                                href="{{ route('painel.products.index', ['store_id' => $store->id]) }}">
                                 <i class="fa-solid fa-list"></i>
                             </a>
                             <a class="btn btn-sm btn-outline-primary"
@@ -53,7 +54,11 @@
     </div>
     {{ $stores->links() }}
 
-    @include('painel.stores.create')
+    @include('painel.stores.create', [
+        'modal' => [
+            'name' => 'modal-create-store',
+        ]
+    ])
 
     @foreach($stores as $store)
         @include('painel.stores.edit', [

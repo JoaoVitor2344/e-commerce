@@ -36,14 +36,12 @@ Route::prefix('/painel')->group(function () {
         });
     });
 
-
     Route::prefix('/login')->group(function () {
-        Route::get('/', [\App\Http\Controllers\PainelController::class, 'login'])->name('painel.login');
+        Route::post('/', [\App\Http\Controllers\PainelController::class, 'authenticate'])->name('painel.authenticate');
     });
 });
 
 Route::prefix('/produtos')->group(function () {
-    Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
     Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
     Route::get('/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
     Route::post('/store', [\App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
