@@ -15,6 +15,28 @@ Route::prefix('/painel')->group(function () {
         Route::put('/{id}/atualizar', [\App\Http\Controllers\UserController::class, 'update'])->name('painel.users.update');
     });
 
+    Route::prefix('/lojas')->group(function () {
+        Route::get('/', [\App\Http\Controllers\StoreController::class, 'index'])->name('painel.stores.index');
+        Route::get('/adicionar', [\App\Http\Controllers\StoreController::class, 'create'])->name('painel.stores.create');
+        Route::post('/adicionar', [\App\Http\Controllers\StoreController::class, 'store'])->name('painel.stores.store');
+        Route::get('/{id}/atualizar', [\App\Http\Controllers\StoreController::class, 'edit'])->name('painel.stores.edit');
+        Route::put('/{id}/atualizar', [\App\Http\Controllers\StoreController::class, 'update'])->name('painel.stores.update');
+
+        Route::prefix('/status/{id}')->group(function () {
+            Route::get('/ativar', [\App\Http\Controllers\StoreController::class, 'activate'])->name('painel.stores.activate');
+            Route::get('/desativar', [\App\Http\Controllers\StoreController::class, 'desactivate'])->name('painel.stores.deactivate');
+        });
+
+        Route::prefix('/{store_id}/produtos')->group(function () {
+            Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('painel.products.index');
+            Route::get('/adicionar', [\App\Http\Controllers\ProductController::class, 'create'])->name('painel.products.create');
+            Route::post('/adicionar', [\App\Http\Controllers\ProductController::class, 'store'])->name('painel.products.store');
+            Route::get('/{id}/atualizar', [\App\Http\Controllers\ProductController::class, 'edit'])->name('painel.products.edit');
+            Route::put('/{id}/atualizar', [\App\Http\Controllers\ProductController::class, 'update'])->name('painel.products.update');
+        });
+    });
+
+
     Route::prefix('/login')->group(function () {
         Route::get('/', [\App\Http\Controllers\PainelController::class, 'login'])->name('painel.login');
     });

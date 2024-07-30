@@ -24,6 +24,14 @@
                     Usuários
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('painel.stores.index') }}" class="nav-link" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#users"></use>
+                    </svg>
+                    Lojas
+                </a>
+            </li>
         </ul>
         <hr>
         <div class="dropdown">

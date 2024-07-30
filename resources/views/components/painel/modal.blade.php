@@ -1,4 +1,4 @@
-<div class="modal" id="modal-add-user" tabindex="-1">
+<div class="modal" id="{{ $modal['id'] }}" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

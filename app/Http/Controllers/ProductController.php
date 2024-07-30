@@ -11,9 +11,13 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($store_id)
     {
-        //
+        $products = Product::where('store_id', $store_id)
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
+        return view('painel.products.index', compact('products'));
     }
 
     /**

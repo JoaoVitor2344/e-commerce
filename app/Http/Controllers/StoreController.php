@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Store;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -12,7 +14,10 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        $stores = Store::paginate(10);
+        $users = User::all();
+
+        return view('painel.stores.index', compact('stores', 'users'));
     }
 
     /**
@@ -28,7 +33,14 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        Store::create($validated);
+
+        return redirect()->back();
     }
 
     /**
@@ -52,7 +64,15 @@ class StoreController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $store = Store::find($id);
+
+        $store->update($validated);
+
+        return redirect()->back();
     }
 
     /**
@@ -61,5 +81,27 @@ class StoreController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function activate(string $id)
+    {
+        $store = Store::find($id);
+
+        $store->update([
+            'status' => 'ACTIVE',
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function desactivate(string $id)
+    {
+        $store = Store::find($id);
+
+        $store->update([
+            'status' => 'INACTIVE',
+        ]);
+
+        return redirect()->back();
     }
 }

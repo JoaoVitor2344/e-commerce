@@ -22,6 +22,9 @@
     @stack('css')
 
     @livewireStyles
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
 
@@ -51,10 +54,12 @@
                 <div class="col-6 text-end">
                     @isset($btnText)
                         @if($btnText != '')
-                            <a href="{{ route($btnRoute) }}"
-                               class="d-none d-sm-inline-block btn btn-sm btn-outline-primary"
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-outline-primary"
                                @isset($btnRoute)
-                               data-bs-toggle="modal"
+                                   href="{{ route($btnRoute[0], $btnRoute['id']) }}"
+                               @endisset
+                               @isset($btnModal)
+                                   data-bs-toggle="modal"
                                data-bs-target="{{ $btnModal }}"
                                 @endisset>
 
@@ -82,6 +87,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Vite -->
 @vite(['resources/js/painel.js'])
