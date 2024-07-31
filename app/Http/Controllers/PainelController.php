@@ -24,7 +24,7 @@ class PainelController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * stores a newly created resource in storage.
      */
     public function store(Request $request)
     {
@@ -69,6 +69,8 @@ class PainelController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+
+        $validated['password'] = bcrypt($validated['password']);
 
         $credentials = $request->only('email', 'password');
 

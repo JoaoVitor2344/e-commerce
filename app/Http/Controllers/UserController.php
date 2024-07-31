@@ -21,7 +21,7 @@ class UserController extends Controller
             $query->where('name', 'like', '%' . $validated['search'] . '%')
                 ->orWhere('email', 'like', '%' . $validated['search'] . '%');
         })
-            ->paginate(10);
+            ->get();
 
         return view('painel.users.index', compact('users'));
     }
@@ -35,7 +35,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * stores a newly created resource in storage.
      */
     public function store(Request $request)
     {

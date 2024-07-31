@@ -42,7 +42,7 @@
                                     @foreach($breadcrumb as $item)
                                         <li class="breadcrumb-item active" aria-current="page">
                                             @if(isset($item['route']))
-                                                <a href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
+                                                <a href="{{ route($item['route'], $item['id'] ?? '') }}">{{ $item['text'] }}</a>
                                             @else
                                                 {{ $item['text'] }}
                                             @endif
@@ -57,7 +57,7 @@
                     @isset($btn)
                         <a class="d-none d-sm-inline-block btn btn-sm btn-outline-primary"
                            @isset($btn['route'])
-                                href="{{ route($btn['route'], $btn['id'] ?? '') }}"
+                               href="{{ route($btn['route'], $btn['id'] ?? '') }}"
                            @endisset
                            data-bs-toggle="modal"
                            data-bs-target="#{{ $btn['modal'] ?? '' }}">
@@ -84,6 +84,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+        integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"
+        integrity="sha512-Rdk63VC+1UYzGSgd3u2iadi0joUrcwX0IWp2rTh6KXFoAmgOjRS99Vynz1lJPT8dLjvo6JZOqpAHJyfCEZ5KoA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

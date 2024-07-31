@@ -14,7 +14,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $stores = Store::paginate(10);
+        $stores = Store::get();
         $users = User::all();
 
         return view('painel.stores.index', compact('stores', 'users'));
@@ -29,7 +29,7 @@ class StoreController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * stores a newly created resource in storage.
      */
     public function store(Request $request)
     {

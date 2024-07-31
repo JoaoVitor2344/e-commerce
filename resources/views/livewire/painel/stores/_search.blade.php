@@ -1,16 +1,13 @@
 <div class="row mb-3">
     <div class="col-12">
-        <form action="{{ route('painel.users.index') }}" method="GET">
+        <form wire:submit="search">
             <div class="d-flex gap-3">
                 <input class="form-control"
                        type="text"
-                       name="search"
+                       wire:model="search_text"
                        placeholder="Digite nome ou email"
-                        value="{{ request()->search ?? '' }}">
+                       value="{{ $search_text }}">
                 <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
-                <a href="{{ route('painel.users.index') }}">
-                    <button type="button" class="btn btn-outline-danger">Limpar</button>
-                </a>
             </div>
         </form>
     </div>

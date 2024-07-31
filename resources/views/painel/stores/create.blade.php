@@ -11,13 +11,12 @@
             @csrf
             <div class="form-group">
                 <label for="name">
-                    Nome
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text"
                        name="name"
                        class="form-control mb-3"
-                       placeholder="Nome Completo">
+                       placeholder="Nome da loja">
                 <small>
                     @error('name')
                     {{ $message }}
@@ -26,7 +25,6 @@
             </div>
             <div class="form-group">
                 <label for="user_id">
-                    Usuário
                     <span class="text-danger">*</span>
                 </label>
                 <select name="user_id" class="form-select mb-3">

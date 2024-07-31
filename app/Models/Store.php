@@ -25,7 +25,7 @@ class Store extends Model
     public function products(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $this->hasMany(Product::class),
+            get: fn($value) => $this->hasMany(Product::class, 'store_id'),
         );
     }
 }
