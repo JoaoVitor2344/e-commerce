@@ -23,9 +23,11 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($store_id)
     {
-        //
+        $store = Store::findOrFail($store_id);
+
+        return view('painel.products.create', compact('store'));
     }
 
     /**
@@ -39,6 +41,7 @@ class ProductController extends Controller
             'price' => 'required',
             'quantity' => 'required|numeric',
             'store_id' => 'required|numeric',
+            'about' => 'required|string',
         ]);
 
         $validated['price'] = str_replace(['R$', ' '], '', $validated['price']);
@@ -54,7 +57,10 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $products = Product::limit(5)->get();
+
+        return view('products.show', compact('product', 'products'));
     }
 
     /**
@@ -79,6 +85,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
+            'about' => 'required|string',
         ]);
 
         $product = Product::findOrFail($id);

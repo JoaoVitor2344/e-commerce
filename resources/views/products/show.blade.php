@@ -43,14 +43,7 @@
                         <p class="fs-6 fw-semibold">
                             Sobre o produto
                         </p>
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetur</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur</li>
-                        </ul>
+                        {{ $product->about }}
                     </div>
                 </div>
             </div>
