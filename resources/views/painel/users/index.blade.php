@@ -14,8 +14,6 @@
 ])
 
 @section('content')
-    {{--    {{ $users->links() }}--}}
-
     <livewire:painel.user :users="$users"/>
 
     @include('painel.users.create', [

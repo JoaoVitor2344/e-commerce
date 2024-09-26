@@ -78,9 +78,9 @@ class PainelController extends Controller
             auth()->logout();
             auth()->attempt($credentials);
 
-            return redirect()->route('painel.index');
+            return redirect()->route('painel.index')->with('success', 'Login efetuado com sucesso!');
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Usuário ou senha inválidos!');
     }
 }

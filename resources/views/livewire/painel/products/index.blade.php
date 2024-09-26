@@ -1,7 +1,7 @@
 <div>
     @include('livewire.painel.products._search')
     <div class="row">
-        @foreach($products as $product)
+        @forelse($products as $product)
             <div class="col-3 mb-3" style="height: 200px;">
                 <a href="{{ route('painel.products.edit', [
                         'store_id' => $product->store_id,
@@ -19,7 +19,10 @@
                     </div>
                 </a>
             </div>
-        @endforeach
+        @empty
+            <div class="col-12 mt-5 text-center">
+                Nenhum produto encontrado.
+            </div>
+        @endforelse
     </div>
-
 </div>

@@ -19,7 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
     <!-- Vite -->
-    @vite(['resources/css/painel.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Custom CSS -->
     @stack('css')
@@ -32,9 +32,11 @@
 <body>
 
 <div class="container-fluid">
-    <div class="row" style="height: 100vh;">
+    <div class="row">
         <x-painel.sidebar/>
+    </div>
 
+    <div class="row justify-content-end">
         <div class="col-10 mt-5">
             <div class="row mb-3">
                 @isset($breadcrumb)
@@ -58,14 +60,16 @@
                 @endisset
                 <div class="col-6 text-end">
                     @isset($btn)
-                        <a class="d-none d-sm-inline-block btn btn-sm btn-outline-primary"
-                           @isset($btn['route'])
-                               href="{{ route($btn['route'], $btn['id'] ?? '') }}"
-                           @endisset
-                           @isset($btn['modal'])
-                               data-bs-toggle="modal" data-bs-target="#{{ $btn['modal'] ?? '' }}"
-                            @endisset>
-                            {{ $btn['text'] }}</a>
+                        <a @isset($btn['route']) href="{{ route($btn['route'], $btn['id'] ?? '') }}"
+                           style="text-decoration: none;" @endisset>
+                            <button
+                                class="d-none d-sm-inline-flex btn btn-sm btn-outline-primary align-items-center gap-1"
+                                @isset($btn['modal']) data-bs-toggle="modal"
+                                data-bs-target="#{{ $btn['modal'] ?? '' }}" @endisset>
+                                <span class="material-symbols-outlined">add</span>
+                                {{ $btn['text'] }}
+                            </button>
+                        </a>
                     @endisset
                 </div>
             </div>
@@ -101,8 +105,7 @@
 <!-- Summernote js -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-<!-- Vite -->
-@vite(['resources/js/painel.js'])
+<x-painel.notification/>
 
 <!-- Custom JS -->
 @stack('js')

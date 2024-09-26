@@ -12,7 +12,7 @@
         ['text' => 'Produtos'],
     ],
     'btn' => [
-        'text' => 'Adicionar produto',
+        'text' => '',
         'route' => 'painel.products.create',
         'id' => $store->id,
     ],

@@ -1,4 +1,4 @@
-<div class="col-2 ps-0">
+<div class="col-2 ps-0 position-fixed top-0 left-0 h-100">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi me-2" width="40" height="32">
@@ -10,33 +10,33 @@
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="{{ route('painel.index') }}"
-                   class="nav-link {{ \Request::route()->getName() == 'painel.index' ? 'active' : '' }}"
+                   class="nav-link {{ \Request::route()->getName() === 'painel.index' ? 'active' : '' }}"
                    aria-current="page">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#home"></use>
                     </svg>
-                    Home
+                    {{ __('painel.index') }}
                 </a>
             </li>
             @auth
                 <li class="nav-item">
                     <a href="{{ route('painel.users.index') }}"
-                       class="nav-link {{ \Request::route()->getName() == 'painel.users.index' ? 'active' : '' }}"
+                       class="nav-link {{ \Request::route()->getName() === 'painel.users.index' ? 'active' : '' }}"
                        aria-current="page">
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#users"></use>
                         </svg>
-                        Usuários
+                        {{ __('users') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('painel.stores.index') }}"
-                       class="nav-link {{ \Request::route()->getName() == 'painel.stores.index' ? 'active' : '' }}"
+                       class="nav-link {{ \Request::route()->getName() === 'painel.stores.index' ? 'active' : '' }}"
                        aria-current="page">
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#users"></use>
                         </svg>
-                        Lojas
+                        {{ __('stores') }}
                     </a>
                 </li>
             @endauth
